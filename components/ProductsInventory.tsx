@@ -1205,9 +1205,6 @@ export default function ProductsInventory({ initialProducts, adminMode = false }
                           <p className="card-price mt-3 text-[1.2rem] font-normal text-[var(--green-mid)]">
                             {item.venta || "-"}
                           </p>
-                          <p className="mt-[2px] text-[0.75rem] text-[var(--text-muted)]">
-                            Costo: {item.costo || "-"}
-                          </p>
                           <a
                             href={getProductWhatsAppUrl(item.producto)}
                             target="_blank"
