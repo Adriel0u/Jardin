@@ -518,8 +518,7 @@ export default function ProductsInventory({ initialProducts, adminMode = false }
   function getProductDescription(product: Product): string {
     const type = product.tipo || "General";
     const sale = product.venta && product.venta !== "-" ? product.venta : "por consultar";
-    const cost = product.costo && product.costo !== "-" ? product.costo : "no especificado";
-    return `${product.producto} pertenece a la categoría ${type}. Su precio de venta es ${sale} y su costo de referencia es ${cost}. Si deseas disponibilidad, tamaño o recomendaciones de cuidado, escríbenos por WhatsApp.`;
+    return `${product.producto} pertenece a la categoría ${type}. Su precio de venta es ${sale}. Si deseas disponibilidad, tamaño o recomendaciones de cuidado, escríbenos por WhatsApp.`;
   }
 
   function getChipTargetType(chip: string): string | null {
