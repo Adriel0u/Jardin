@@ -1257,21 +1257,13 @@ export default function ProductsInventory({ initialProducts, adminMode = false }
                 {getProductDescription(selectedProduct)}
               </p>
 
-              <div className="mt-4 grid grid-cols-2 gap-3">
+              <div className="mt-4">
                 <div className="rounded-md border border-[var(--pink-soft)] bg-[var(--cream)] px-3 py-2">
                   <p className="text-[0.68rem] uppercase tracking-[0.08em] text-[var(--text-muted)]">
                     Venta
                   </p>
                   <p className="mt-1 text-[1rem] text-[var(--green-mid)]">
                     {selectedProduct.venta || "-"}
-                  </p>
-                </div>
-                <div className="rounded-md border border-[var(--pink-soft)] bg-[var(--cream)] px-3 py-2">
-                  <p className="text-[0.68rem] uppercase tracking-[0.08em] text-[var(--text-muted)]">
-                    Costo
-                  </p>
-                  <p className="mt-1 text-[1rem] text-[var(--green-mid)]">
-                    {selectedProduct.costo || "-"}
                   </p>
                 </div>
               </div>
