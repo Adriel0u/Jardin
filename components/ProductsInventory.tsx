@@ -596,7 +596,7 @@ export default function ProductsInventory({ initialProducts, adminMode = false }
       <section
         id="inicio"
         data-reveal
-        className="je-hero reveal-on-scroll mx-auto grid min-h-[88vh] w-full max-w-6xl grid-cols-1 gap-8 px-4 py-10 md:grid-cols-2 md:px-8"
+        className="je-hero reveal-on-scroll is-visible mx-auto grid min-h-[88vh] w-full max-w-6xl grid-cols-1 gap-8 px-4 py-10 md:grid-cols-2 md:px-8"
       >
         <div className="particles" aria-hidden>
           <div className="p petal ph1" />
@@ -721,7 +721,7 @@ export default function ProductsInventory({ initialProducts, adminMode = false }
       <section
         id="catalogo"
         data-reveal
-        className="je-catalog reveal-on-scroll bg-white px-4 py-16 md:px-8"
+        className="je-catalog reveal-on-scroll is-visible bg-white px-4 py-16 md:px-8"
         ref={catalogRef}
       >
         <div className="catalog-sow-wrapper mx-auto w-full max-w-6xl">
@@ -729,18 +729,10 @@ export default function ProductsInventory({ initialProducts, adminMode = false }
           <span className="float-leaf float-leaf-a" aria-hidden />
           <span className="float-leaf float-leaf-b" aria-hidden />
           <header className="cat-header text-center">
-            <p
-              className={`cat-super catalog-label text-[0.75rem] uppercase tracking-[0.15em] text-[var(--green-mid)] ${
-                catalogEntered ? "is-visible" : ""
-              }`}
-            >
+            <p className="cat-super catalog-label is-visible text-[0.75rem] uppercase tracking-[0.15em] text-[var(--green-mid)]">
               Nuestros productos
             </p>
-            <h2
-              className={`cat-h2 catalog-title mt-3 font-display text-[2.4rem] text-[var(--text-dark)] ${
-                catalogEntered ? "is-visible" : ""
-              }`}
-            >
+            <h2 className="cat-h2 catalog-title is-visible mt-3 font-display text-[2.4rem] text-[var(--text-dark)]">
               Catalogo de plantas
             </h2>
           </header>
@@ -1448,7 +1440,7 @@ export default function ProductsInventory({ initialProducts, adminMode = false }
         </div>
       ) : null}
 
-      <footer data-reveal className="footer reveal-on-scroll px-4 py-10 md:px-8">
+      <footer data-reveal className="footer reveal-on-scroll is-visible px-4 py-10 md:px-8">
         <div className="rounded-none bg-[var(--green-dark)] px-6 py-10 text-center">
           <p className="footer-name font-display text-2xl italic text-white">
             Jardin Esperanza
