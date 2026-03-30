@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botánica | E-Commerce Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo"><i class="ph ph-plant"></i> Botánica</div>
+        <div class="header-actions">
+            <button class="btn-icon" onclick="abrirLogin()" title="Acceso Vendedor">
+                <i class="ph ph-user-circle"></i>
+            </button>
+            <button class="btn-icon" onclick="toggleCart()">
+                <i class="ph ph-shopping-cart"></i>
+                <span class="badge" id="cartCount">0</span>
+            </button>
+        </div>
+    </header>
+
+    <div id="adminPanel" class="admin-panel">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h2>👨‍🌾 Panel de Vendedor</h2>
+            <button onclick="cerrarSesion()" style="background:#e74c3c; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;">Salir</button>
+        </div>
+        <p style="margin-bottom:20px; color:#666;">Agrega nuevos productos a la tienda.</p>
+        
+        <form onsubmit="agregarProducto(event)">
+            <input type="text" id="newNombre" class="form-input" placeholder="Nombre de la planta" required>
+            <input type="number" id="newPrecio" class="form-input" placeholder="Precio ($)" step="0.01" required>
+            <input type="url" id="newImg" class="form-input" placeholder="URL de la imagen (https://...)" required>
+            <button type="submit" class="btn-add">Publicar Producto</button>
+        </form>
+    </div>
+
+    <section class="hero">
+        <div>
+            <h1>Naturaleza en casa</h1>
+            <p>Envío gratis en compras mayores a $50</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 style="margin-bottom:20px; color:var(--primary)">Nuestras Plantas</h2>
+        <div class="products-grid" id="grid"></div>
+    </section>
+
+    <div class="sidebar" id="cartSidebar">
+        <div class="sidebar-header">
+            <h3>Tu Carrito</h3>
+            <button class="close-cart" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItemsContainer">
+            <p style="text-align:center; color:#888; margin-top:20px;">Tu carrito está vacío 🌱</p>
+        </div>
+        <div class="cart-footer">
+            <div class="total-row">
+                <span>Total:</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-box">
+            <h3 style="margin-bottom:15px;">Acceso Vendedor</h3>
+            <p style="margin-bottom:15px; font-size:0.9rem;">Contraseña:</p>
+            <input type="password" id="passwordInput" class="form-input" placeholder="Contraseña">
+            <button class="btn-add" onclick="verificarLogin()" style="margin-top:10px;">Entrar</button>
+            <button onclick="cerrarLogin()" style="background:none; border:none; margin-top:10px; cursor:pointer; color:#666;">Cancelar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
