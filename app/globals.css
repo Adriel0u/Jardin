@@ -55,8 +55,8 @@
   }
 
   .reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(28px);
+    opacity: 1;
+    transform: translateY(0);
     transition:
       opacity 0.75s ease,
       transform 0.75s ease;
@@ -64,7 +64,13 @@
     will-change: opacity, transform;
   }
 
-  .reveal-on-scroll.is-visible {
+  html.js-reveal-ready .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  .reveal-on-scroll.is-visible,
+  html.js-reveal-ready .reveal-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
   }
@@ -1018,14 +1024,20 @@
 
   .catalog-label,
   .catalog-title {
+    opacity: 1;
+    transform: translate(0);
+  }
+
+  html.js-reveal-ready .catalog-label,
+  html.js-reveal-ready .catalog-title {
     opacity: 0;
   }
 
-  .catalog-label {
+  html.js-reveal-ready .catalog-label {
     transform: translateX(-8px);
   }
 
-  .catalog-title {
+  html.js-reveal-ready .catalog-title {
     transform: translateY(6px);
   }
 
