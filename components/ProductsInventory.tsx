@@ -9,6 +9,7 @@ import {
   useRef,
   useState,
 } from "react";
+import Image from "next/image";
 import { signOut } from "next-auth/react";
 import { Product } from "@/lib/types";
 import SplashFlower from "@/components/SplashFlower";
@@ -1187,10 +1188,12 @@ export default function ProductsInventory({ initialProducts, adminMode = false }
                           </span>
                           <div className="mb-3 overflow-hidden rounded-lg border border-[var(--pink-soft)] bg-[var(--cream)]">
                             <div className="relative h-28 w-full">
-                              <img
+                              <Image
                                 src={getProductPhoto(item)}
                                 alt={item.producto}
-                                loading="lazy"
+                                fill
+                                sizes="(max-width: 768px) 100vw, 220px"
+                                unoptimized
                                 className="h-full w-full object-cover"
                               />
                             </div>
