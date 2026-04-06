@@ -1028,19 +1028,7 @@ export default function ProductsInventory({ initialProducts, adminMode = false }
                               )}
                             </td>
                             <td className="px-4 py-3 text-[var(--text-muted)]">
-                              {inlineEditingId === item.id ? (
-                                <input
-                                  className="w-full min-w-[220px] rounded border border-[#e0ddd8] px-2 py-1.5 text-sm outline-none focus:border-[var(--green-mid)]"
-                                  value={inlineForm.imagen}
-                                  onChange={(event) =>
-                                    setInlineForm((current) => ({
-                                      ...current,
-                                      imagen: event.target.value,
-                                    }))
-                                  }
-                                  placeholder="https://..."
-                                />
-                              ) : item.imagen ? (
+                              {item.imagen ? (
                                 <a
                                   href={item.imagen}
                                   target="_blank"
@@ -1368,27 +1356,12 @@ export default function ProductsInventory({ initialProducts, adminMode = false }
               </div>
               <div>
                 <label className="text-[0.8rem] uppercase tracking-[0.1em] text-[var(--text-muted)]">
-                  Imagen (URL)
-                </label>
-                <input
-                  className="mt-1.5 w-full rounded-md border-[1.5px] border-[#e0ddd8] px-3.5 py-2.5 outline-none focus:border-[var(--green-mid)]"
-                  type="url"
-                  value={form.imagen}
-                  onChange={(event) =>
-                    setForm((current) => ({ ...current, imagen: event.target.value }))
-                  }
-                  placeholder="https://..."
-                />
-              </div>
-              <div>
-                <label className="text-[0.8rem] uppercase tracking-[0.1em] text-[var(--text-muted)]">
                   Subir imagen
                 </label>
                 <input
                   className="mt-1.5 w-full rounded-md border-[1.5px] border-[#e0ddd8] px-3 py-2.5 text-sm outline-none focus:border-[var(--green-mid)]"
                   type="file"
                   accept="image/*"
-                  capture="environment"
                   disabled={imageUploading || loading || saveSuccessAnimation}
                   onChange={(event) => {
                     const selectedFile = event.target.files?.[0];
@@ -1400,7 +1373,7 @@ export default function ProductsInventory({ initialProducts, adminMode = false }
                 <p className="mt-1 text-[0.72rem] text-[var(--text-muted)]">
                   {imageUploading
                     ? "Subiendo imagen..."
-                    : "En celular puedes elegir camara o galeria."}
+                    : "Selecciona una foto desde galeria o camara del celular."}
                 </p>
                 {form.imagen ? (
                   <a
