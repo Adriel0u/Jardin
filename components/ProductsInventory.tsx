@@ -1182,14 +1182,14 @@ export default function ProductsInventory({ initialProducts, adminMode = false }
                             </svg>
                           </span>
                           <div className="mb-3 overflow-hidden rounded-lg border border-[var(--pink-soft)] bg-[var(--cream)]">
-                            <div className="relative h-28 w-full">
+                            <div className="relative h-32 w-full">
                               <Image
                                 src={getProductPhoto(item)}
                                 alt={item.producto}
                                 fill
                                 sizes="(max-width: 768px) 100vw, 220px"
                                 unoptimized
-                                className="h-full w-full object-cover"
+                                className="h-full w-full object-contain p-1"
                               />
                             </div>
                           </div>
@@ -1234,12 +1234,16 @@ export default function ProductsInventory({ initialProducts, adminMode = false }
             className="modal-pop-in w-full max-w-[520px] overflow-hidden rounded-2xl border border-[var(--pink-soft)] bg-white"
             onClick={(event) => event.stopPropagation()}
           >
-            <div
-              className="h-[220px] w-full bg-cover bg-center"
-              style={{ backgroundImage: `url("${getProductPhoto(selectedProduct)}")` }}
-              role="img"
-              aria-label={selectedProduct.producto}
-            />
+            <div className="relative h-[260px] w-full bg-[var(--cream)]">
+              <Image
+                src={getProductPhoto(selectedProduct)}
+                alt={selectedProduct.producto}
+                fill
+                sizes="(max-width: 768px) 100vw, 520px"
+                unoptimized
+                className="object-contain p-2"
+              />
+            </div>
             <div className="p-6">
               <p className="text-[0.72rem] uppercase tracking-[0.1em] text-[var(--text-muted)]">
                 Tipo: {selectedProduct.tipo || "General"}
