@@ -1231,60 +1231,96 @@ export default function ProductsInventory({ initialProducts, adminMode = false }
           onClick={closeProductDetails}
         >
           <article
-            className="modal-pop-in w-full max-w-[520px] overflow-hidden rounded-2xl border border-[var(--pink-soft)] bg-white"
+            className="modal-pop-in w-full max-w-[880px] overflow-hidden rounded-2xl border border-[var(--pink-soft)] bg-white"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="relative h-[260px] w-full bg-[var(--cream)]">
-              <Image
-                src={getProductPhoto(selectedProduct)}
-                alt={selectedProduct.producto}
-                fill
-                sizes="(max-width: 768px) 100vw, 520px"
-                unoptimized
-                className="object-contain p-2"
-              />
-            </div>
-            <div className="p-6">
-              <p className="text-[0.72rem] uppercase tracking-[0.1em] text-[var(--text-muted)]">
-                Tipo: {selectedProduct.tipo || "General"}
-              </p>
-              <h3 className="mt-2 font-display text-[1.6rem] leading-[1.2] text-[var(--text-dark)]">
-                {selectedProduct.producto}
-              </h3>
-              <p className="mt-3 text-[0.92rem] leading-[1.7] text-[var(--text-muted)]">
-                {getProductDescription(selectedProduct)}
-              </p>
-
-              <div className="mt-4">
-                <div className="rounded-md border border-[var(--pink-soft)] bg-[var(--cream)] px-3 py-2">
-                  <p className="text-[0.68rem] uppercase tracking-[0.08em] text-[var(--text-muted)]">
-                    Venta
-                  </p>
-                  <p className="mt-1 text-[1rem] text-[var(--green-mid)]">
-                    {selectedProduct.venta || "-"}
-                  </p>
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              <div className="relative min-h-[300px] overflow-hidden md:min-h-[460px]">
+                <Image
+                  src={getProductPhoto(selectedProduct)}
+                  alt={selectedProduct.producto}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 420px"
+                  unoptimized
+                  className="scale-105 object-cover opacity-40 blur-[1px]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--green-dark)] via-[var(--green-mid)] to-[#163526]/90" />
+                <div className="relative z-10 flex h-full flex-col justify-end p-6">
+                  <span className="inline-flex w-fit rounded-full border border-white/30 bg-white/15 px-3 py-1 text-[0.68rem] uppercase tracking-[0.08em] text-white/90">
+                    {selectedProduct.tipo || "General"}
+                  </span>
+                  <h3 className="mt-3 font-display text-[2rem] leading-[1.1] text-white">
+                    {selectedProduct.producto}
+                  </h3>
                 </div>
               </div>
 
-              <a
-                href={getProductWhatsAppUrl(selectedProduct.producto)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="wa-btn mt-5 inline-flex w-full items-center justify-center gap-2 rounded-[6px] px-3 py-[0.45rem] text-[0.78rem]"
-              >
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden>
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                </svg>
-                Consultar por WhatsApp
-              </a>
+              <div className="flex flex-col gap-4 p-6 md:p-7">
+                <div>
+                  <p className="text-[0.68rem] uppercase tracking-[0.08em] text-[var(--text-muted)]">
+                    Descripcion
+                  </p>
+                  <p className="mt-2 text-[0.92rem] leading-[1.7] text-[var(--text-muted)]">
+                    {getProductDescription(selectedProduct)}
+                  </p>
+                </div>
 
-              <button suppressHydrationWarning
-                type="button"
-                onClick={closeProductDetails}
-                className="btn-animated mt-2 w-full rounded-[6px] border border-[var(--pink-soft)] bg-white px-3 py-[0.45rem] text-[0.78rem] text-[var(--text-muted)]"
-              >
-                Cerrar
-              </button>
+                <div className="border-t border-[var(--pink-soft)] pt-4">
+                  <p className="text-[0.68rem] uppercase tracking-[0.08em] text-[var(--text-muted)]">
+                    Cuidados
+                  </p>
+                  <div className="mt-2 space-y-1.5 text-[0.82rem] text-[var(--text-muted)]">
+                    <p className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[var(--green-mid)]" />
+                      Luz natural y buen drenaje
+                    </p>
+                    <p className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[var(--green-mid)]" />
+                      Riego moderado segun clima
+                    </p>
+                    <p className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[var(--green-mid)]" />
+                      Consultanos para recomendaciones
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-auto border-t border-[var(--pink-soft)] pt-4">
+                  <div className="mb-4 flex items-end justify-between gap-3">
+                    <div>
+                      <p className="text-[0.68rem] uppercase tracking-[0.08em] text-[var(--text-muted)]">
+                        Precio de venta
+                      </p>
+                      <p className="mt-1 font-display text-[2rem] leading-none text-[var(--text-dark)]">
+                        {selectedProduct.venta || "-"}
+                      </p>
+                    </div>
+                    <span className="rounded-full bg-[var(--green-xlight)] px-3 py-1 text-[0.72rem] font-medium text-[var(--green-mid)]">
+                      Disponible
+                    </span>
+                  </div>
+
+                  <a
+                    href={getProductWhatsAppUrl(selectedProduct.producto)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="wa-btn inline-flex w-full items-center justify-center gap-2 rounded-[8px] px-3 py-[0.58rem] text-[0.82rem]"
+                  >
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden>
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg>
+                    Consultar por WhatsApp
+                  </a>
+
+                  <button suppressHydrationWarning
+                    type="button"
+                    onClick={closeProductDetails}
+                    className="btn-animated mt-2 w-full rounded-[8px] border border-[var(--pink-soft)] bg-transparent px-3 py-[0.55rem] text-[0.82rem] text-[var(--text-muted)]"
+                  >
+                    Cerrar
+                  </button>
+                </div>
+              </div>
             </div>
           </article>
         </div>
