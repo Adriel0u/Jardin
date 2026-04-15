@@ -1141,11 +1141,11 @@ export default function ProductsInventory({ initialProducts, adminMode = false }
                       </span>
                     </div>
 
-                    <div className="cards-grid catalog-grid grid gap-[1.2rem] [grid-template-columns:repeat(auto-fill,minmax(200px,1fr))]">
+                    <div className="cards-grid catalog-grid grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                       {items.map((item, index) => (
                         <article
                           key={`${item.id}-${deferredSearch}-${selectedType}`}
-                          className="plant-card product-card card-in group cursor-pointer rounded-xl border border-[var(--pink-soft)] bg-white px-[1.2rem] py-[1.4rem] transition duration-300 hover:-translate-y-[4px] hover:border-[var(--green-light)]"
+                          className="plant-card product-card card-in group cursor-pointer overflow-hidden rounded-xl border border-[var(--pink-soft)] bg-white transition duration-300 hover:-translate-y-[4px] hover:border-[var(--green-light)]"
                           style={
                             {
                               "--card-delay": `${Math.min((groupIndex * 3 + index) * 36, 260)}ms`,
@@ -1169,52 +1169,40 @@ export default function ProductsInventory({ initialProducts, adminMode = false }
                           role="button"
                           tabIndex={0}
                         >
-                          <span className="mc-sprout" aria-hidden>
-                            <span className="mc-sprout-stem" />
-                            <span className="mc-sprout-bud" />
-                          </span>
-                          <span className="card-leaf" aria-hidden>
-                            <svg viewBox="0 0 60 60">
-                              <path d="M30 4 C12 14 6 34 30 56 C54 34 48 14 30 4Z" fill="#a8c5a0" />
-                              <line x1="30" y1="7" x2="30" y2="53" stroke="#4a7c59" strokeWidth="1.5" />
-                              <line x1="30" y1="20" x2="20" y2="30" stroke="#4a7c59" strokeWidth="1" />
-                              <line x1="30" y1="30" x2="40" y2="38" stroke="#4a7c59" strokeWidth="1" />
-                            </svg>
-                          </span>
-                          <div className="mb-3 overflow-hidden rounded-lg border border-[var(--pink-soft)] bg-[var(--cream)]">
-                            <div className="relative h-32 w-full">
-                              <Image
-                                src={getProductPhoto(item)}
-                                alt={item.producto}
-                                fill
-                                sizes="(max-width: 768px) 100vw, 220px"
-                                unoptimized
-                                className="h-full w-full object-contain p-1"
-                              />
-                            </div>
+                          <div className="overflow-hidden rounded-t-xl">
+                            <Image
+                              src={getProductPhoto(item)}
+                              alt={item.producto}
+                              width={640}
+                              height={448}
+                              unoptimized
+                              className="w-full h-56 object-cover"
+                            />
                           </div>
-                          <h3 className="card-name mt-1 font-display text-[1rem] leading-[1.3] text-[var(--text-dark)]">
-                            {item.producto}
-                          </h3>
-                          <p className="card-type mt-1 text-[0.72rem] uppercase tracking-[0.08em] text-[var(--text-muted)]">
-                            Tipo: {item.tipo || "General"}
-                          </p>
-                          <p className="card-price mt-3 text-[1.2rem] font-normal text-[var(--green-mid)]">
-                            {item.venta || "-"}
-                          </p>
-                          <a
-                            href={getProductWhatsAppUrl(item.producto)}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(event) => event.stopPropagation()}
-                            className="wa-btn mt-3 inline-flex w-full items-center justify-center gap-2 rounded-[6px] px-3 py-[0.45rem] text-[0.78rem]"
-                          >
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden>
-                              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                            </svg>
-                            Consultar por WhatsApp
-                            <span className="ripple-el" />
-                          </a>
+                          <div className="p-4">
+                            <h3 className="card-name font-display text-[1rem] leading-[1.3] text-[var(--text-dark)]">
+                              {item.producto}
+                            </h3>
+                            <p className="mt-2 inline-block text-xs font-medium tracking-wide uppercase bg-green-100 text-green-800 px-3 py-1 rounded-full mb-2">
+                              Tipo: {item.tipo || "General"}
+                            </p>
+                            <p className="card-price mt-2 font-serif text-xl font-medium text-[var(--green-mid)]">
+                              {item.venta || "-"}
+                            </p>
+                            <a
+                              href={getProductWhatsAppUrl(item.producto)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(event) => event.stopPropagation()}
+                              className="wa-btn mt-3 inline-flex w-full items-center justify-center gap-2 rounded-[6px] px-3 py-[0.45rem] text-[0.78rem]"
+                            >
+                              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden>
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                              </svg>
+                              Consultar por WhatsApp
+                              <span className="ripple-el" />
+                            </a>
+                          </div>
                         </article>
                       ))}
                     </div>
@@ -1242,14 +1230,14 @@ export default function ProductsInventory({ initialProducts, adminMode = false }
                   fill
                   sizes="(max-width: 768px) 100vw, 420px"
                   unoptimized
-                  className="scale-105 object-cover opacity-40 blur-[1px]"
+                  className="object-cover opacity-80"
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-[var(--green-dark)] via-[var(--green-mid)] to-[#163526]/90" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#2d6a3f]/45 via-[#4a7c59]/30 to-[#163526]/55" />
                 <div className="relative z-10 flex h-full flex-col justify-end p-6">
-                  <span className="inline-flex w-fit rounded-full border border-white/30 bg-white/15 px-3 py-1 text-[0.68rem] uppercase tracking-[0.08em] text-white/90">
+                  <span className="inline-flex w-fit rounded-full border border-white/55 bg-black/15 px-3 py-1 text-[0.68rem] uppercase tracking-[0.08em] text-white">
                     {selectedProduct.tipo || "General"}
                   </span>
-                  <h3 className="mt-3 font-display text-[2rem] leading-[1.1] text-white">
+                  <h3 className="mt-3 font-display text-[2rem] leading-[1.1] text-white [text-shadow:0_2px_10px_rgba(0,0,0,0.55)]">
                     {selectedProduct.producto}
                   </h3>
                 </div>
